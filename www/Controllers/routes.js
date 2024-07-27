@@ -3,7 +3,7 @@ const local_server = "https://localhost:44354/api/auth/"                        
 const public_server = "https://escrileapi.bsite.net/api/auth/"                        //Write WEB API public address
 const local_sources = ""       //Write App local resources
 
-const env = public_server                                  //Select your environment (local or public server)
+const env = local_server                                  //Select your environment (local or public server)
 
 //Login API
 const login_route = env + "login"
@@ -22,6 +22,9 @@ const showClasses_route = env + "clasesCreadas"
 
 //Mostar clase por id
 const showClassWithId_route = env + "clase/"
+
+//Mostrar usuarios
+const showUsers_route = env + "users"
 
 //Users API
 const allUsers_route = env + "Users"

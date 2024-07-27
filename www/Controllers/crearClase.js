@@ -17,14 +17,6 @@ function crearClase() {
             mostrarClases();
         }
         return response.json();
-    })
-    .then(data => {
-        document.getElementById('closeModal').innerText = data;
-        mostrarClases();
-    })
-    .catch(error => {
-        console.error('Error al crear la clase:', error);
-        document.getElementById('mensajeCrearClase').innerText = 'Error al crear la clase. Consulta la consola para más detalles.';
     });
 }
 
