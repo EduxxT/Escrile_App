@@ -32,6 +32,15 @@ const deleteClass_route = env + "eliminarClase/"
 //Mostrar usuarios
 const showUsers_route = env + "users"
 
+//Mostrar usuarios por id
+const showUserWithId_route = env + "usuario/"
+
+//Editar usuario por id
+const editUserWithId_route = env + "editarUsuario/"
+
+//Eliminar usuario por id
+const deleteUserWithId_route = env + "eliminarUsuario/"
+
 //Users API
 const allUsers_route = env + "Users"
 const postUser_route = env + "Users/"
