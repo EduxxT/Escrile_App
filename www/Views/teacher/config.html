@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Configurar tareas</title>
-    <script src="../../Controllers/asegurarpagina.js"></script>
-    <script src="../../Controllers/logout.js"></script>
+    <script src="../../Controllers/independiente/asegurarpagina.js"></script>
+    <script src="../../Controllers/independiente/logout.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -23,6 +23,23 @@
     />
    </head>
    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+   <script src="../../Controllers/routes.js"></script>
+    <script src="../../Controllers/independiente/selectAll.js"></script>
+    <script src="../../Controllers/mostrar/mostrarClaseAlumno.js"></script>
+   <style>
+    @media (max-width: 768px) {
+      #datepicker-range-start, #datepicker-range-end {
+        width: 100%;
+        height: 30px;
+      }
+    }
+    @media (max-width: 480px) {
+      #datepicker-range-start, #datepicker-range-end {
+        width: 100%;
+        height: 25px;
+      }
+    }
+    </style>
   <body>
     <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
@@ -300,115 +317,65 @@
         </header>
         <main class="h-full overflow-y-auto">
           <div class="container px-6 mx-auto grid">
-            <h2
-              class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
-            >
+            <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
               Configuración de asignación
             </h2>
-           
+        
+            <!-- Date Range Picker -->
             <div id="date-range-picker" date-rangepicker class="flex items-center">
               <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                    </svg>
+                <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                  <svg class="w-12 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                  </svg>
                 </div>
-                <input id="datepicker-range-start" name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
+                <input id="datepicker-range-start" name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-12 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
               </div>
-              <span class="mx-4 text-gray-500">to</span>
+              <span class="mx-4 text-gray-500 text-lg">to</span>
               <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                    </svg>
+                <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                  <svg class="w-12 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                  </svg>
                 </div>
-                <input id="datepicker-range-end" name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
+                <input id="datepicker-range-end" name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-12 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+              </div>
             </div>
-            </div>
-
+            <h4></h4>
+            <br>
             <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
               ¿A quien le quieres asignar?
             </h4>
+            
+            <!-- Student Selection Table -->
             <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
               <div class="w-full overflow-x-auto">
                 <table class="w-full whitespace-no-wrap">
                   <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                       <th class="px-4 py-3">
-                        <input type="checkbox" id="select-all" class="form-checkbox">
+                        <input type="checkbox" id="select-all" class="form-checkbox border-gray-400">
                       </th>
                       <th class="px-4 py-3">Alumno</th>
-                      <th class="px-4 py-3">Unidad</th>
                     </tr>
                   </thead>
-                  <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                    <tr class="text-gray-700 dark:text-gray-400">
-                      <td class="px-4 py-3">
-                        <input type="checkbox" class="form-checkbox">
-                      </td>
-                      <td class="px-4 py-3">
-                        <div class="flex items-center text-sm">
-                          <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                            <img class="object-cover w-full h-full rounded-full" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="" loading="lazy">
-                            <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                          </div>
-                          <div>
-                            <p class="font-semibold">Hans Burger</p>
-                            <p class="text-xs text-gray-600 dark:text-gray-400">Alumno</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="px-4 py-3 text-sm">Unidad 1</td>
-                    </tr>
-                    <tr class="text-gray-700 dark:text-gray-400">
-                      <td class="px-4 py-3">
-                        <input type="checkbox" class="form-checkbox">
-                      </td>
-                      <td class="px-4 py-3">
-                        <div class="flex items-center text-sm">
-                          <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                            <img class="object-cover w-full h-full rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&facepad=3&fit=facearea&s=707b9c33066bf8808c934c8ab394dff6" alt="" loading="lazy">
-                            <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                          </div>
-                          <div>
-                            <p class="font-semibold">Jolina Angelie</p>
-                            <p class="text-xs text-gray-600 dark:text-gray-400">Alumno</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="px-4 py-3 text-sm">Unidad 1</td>
-                    </tr>
-                    <tr class="text-gray-700 dark:text-gray-400">
-                      <td class="px-4 py-3">
-                        <input type="checkbox" class="form-checkbox">
-                      </td>
-                      <td class="px-4 py-3">
-                        <div class="flex items-center text-sm">
-                          <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                            <img class="object-cover w-full h-full rounded-full" src="https://images.unsplash.com/photo-1546456073-6712f79251bb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="" loading="lazy">
-                            <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                          </div>
-                          <div>
-                            <p class="font-semibold">Wenzel Dashington</p>
-                            <p class="text-xs text-gray-600 dark:text-gray-400">Alumno</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="px-4 py-3 text-sm">Unidad 1</td>
-                    </tr>    
+                  <tbody id="student-list" class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                    <!-- Student rows will be dynamically populated here -->
                   </tbody>
                 </table>
               </div>
             </div>
+            
             <div class="flex justify-end mt-4">
               <button
+                id="assign-button"
                 class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-                onclick="window.location.href='#'"
               >
                 Asignar
               </button>
             </div>
-        </main>
+          </div>
+        </main>        
       </div>
     </div>
     <script>

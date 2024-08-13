@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alumnos</title>
-    <script src="../../Controllers/asegurarpagina.js"></script>
-    <script src="../../Controllers/logout.js"></script>
+    <script src="../../Controllers/independiente/asegurarpagina.js"></script>
+    <script src="../../Controllers/independiente/logout.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -17,6 +17,16 @@
       defer
     ></script>
     <script src="../../public/js/init-alpine.js"></script>
+    <script src="../../Controllers/routes.js"></script>
+    <script src="../../Controllers/mostrar/mostrarProfesorAlumnos.js"></script>
+    <style>
+      th[aria-sort="ascending"]::after {
+          content: "";
+      }
+      th[aria-sort="descending"]::after {
+          content: "";
+      }
+    </style>
   </head>
   <body>
     <div
@@ -198,33 +208,24 @@
               </svg>
             </button>
             <!-- Search input -->
-            <div class="flex justify-center flex-1 lg:mr-32">
-              <div
-                class="relative w-full max-w-xl mr-6 focus-within:text-purple-500"
-              >
-                <div class="absolute inset-y-0 flex items-center pl-2">
-                  <svg
-                    class="w-4 h-4"
-                    aria-hidden="true"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <input
-                  class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
-                  type="text"
-                  placeholder="Buscar alumno"
-                  aria-label="Search"
-                />
+           <!-- Search input -->
+           <div class="flex justify-center flex-1 lg:mr-32">
+            <div
+              class="relative w-full max-w-xl mr-6 focus-within:text-purple-500"
+            >
+              <div class="absolute inset-y-0 flex items-center pl-2">
+                <svg
+                  class="w-4 h-4"
+                  aria-hidden="true"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                </svg>
               </div>
+
             </div>
-            <ul class="flex items-center flex-shrink-0 space-x-6">
+          </div>
+          <ul class="flex items-center flex-shrink-0 space-x-6">
               <!-- Theme toggler -->
               <li class="flex">
                 <button
@@ -304,140 +305,43 @@
         </header>
         <main class="h-full pb-16 overflow-y-auto">
           <div class="container px-6 mx-auto grid">
-            <h2
-              class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
-            >
-              Tus alumnos
-            </h2>
-            <!-- Aqui se insertaran los alumnos -->
-            <label class="block mt-4 text-sm">
-              <span class="text-gray-700 dark:text-gray-400">
-                Grupo:
-              </span>
-              <select
-                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-              >
-                <option>Todos</option>
-                <option>1-A</option>
-                <option>1-B</option>
-                <option>1-C</option>
-              </select>
-            </label>
-             <!-- -->
-          
-             <!-- --> 
-             <label class="block mt-4 text-sm">
-              <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                      <th scope="col" class="p-4">
-                        <div class="flex items-center">
-                          <label for="" class="sr-only"></label>
-                        </div>
-                    <th scope="col" class="px-2 py-3 md:px-6"> Nombre</th>
-                    <th scope="col" class="px-2 py-3 md:px-6">Unidad</th>
-                    <th scope="col" class="px-2 py-3 md:px-6"> Calificaciones </th>
-                  </tr>
-            </thead>
-            <tbody>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 p-4">
-                  <div class="flex items-center">
+              <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+                  Tus alumnos
+              </h2>
+              <!-- Select para elegir la clase -->
+              <label class="block mt-4 text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">Clase:</span>
+                  <select id="claseSelect" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                      <option value="">Selecciona una clase</option>
+                  </select>
+              </label>
+              
+              <!-- Tabla para mostrar los alumnos -->
+              <label class="block mt-4 text-sm">
+                  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                      <table id="alumnosTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                              <tr>
+                                  <th scope="col" class="p-4">
+                                      <div class="flex items-center">
+                                          <label for="" class="sr-only"></label>
+                                      </div>
+                                  </th>
+                                  <th scope="col" class="px-2 py-3 md:px-6 sortable" data-sort="name">Nombre
+                                      <span class="text-gray-500 dark:text-gray-300"></span>
+                                  </th>
+                                  <th scope="col" class="px-2 py-3 md:px-6">Unidad</th>
+                                  <th scope="col" class="px-2 py-3 md:px-6">Calificaciones</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <!-- Aquí se insertarán las filas de alumnos -->
+                          </tbody>
+                      </table>
                   </div>
-                </td>
-                <th scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white md:px-6">
-                  Jesus Santos
-                </th>
-                <td class="px-2 py-4 md:px-6">
-                  Unidad 1
-                </td>
-                <td class="px-2 py-4 md:px-6">
-                10/10
-                </td>
-              </tr>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 p-4">
-                  <div class="flex items-center">
-                  </div>
-                </td>
-                <th scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white md:px-6">
-                  Humberto Araguz
-                </th>
-                <td class="px-2 py-4 md:px-6">
-                  Unidad 1
-                </td>
-                <td class="px-2 py-4 md:px-6">
-                  10/10
-                  </td>
-              </tr>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 p-4">
-                  <div class="flex items-center">
-                  </div>
-                </td>
-                <th scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white md:px-6">
-                  Anahis Lorenzo
-                </th>
-                
-                <td class="px-2 py-4 md:px-6">
-                  Unidad 1
-                </td>
-                <td class="px-2 py-4 md:px-6">
-                  10/10
-                  </td>
-              </tr>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 p-4">
-                  <div class="flex items-center">
-                  </div>
-                </td>
-                <th scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white md:px-6">
-                  Abrir Rivera
-                </th>
-                <td class="px-2 py-4 md:px-6">
-                  Unidad 1
-                </td>
-                <td class="px-2 py-4 md:px-6">
-                  10/10
-                  </td>
-              </tr>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 p-4">
-                  <div class="flex items-center">
-                  </div>
-                </td>
-                <th scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white md:px-6">
-                  Brandon Martinez
-                </th>
-                <td class="px-2 py-4 md:px-6">
-                  Unidad 1
-                </td>
-                <td class="px-2 py-4 md:px-6">
-                  10/10
-                  </td>
-              </tr>
-              <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 p-4">
-                  <div class="flex items-center">
-                  </div>
-                </td>
-                <th scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white md:px-6">
-                  Yoleth Santos
-                </th>
-                <td class="px-2 py-4 md:px-6">
-                  Unidad 1
-                </td>
-                <td class="px-2 py-4 md:px-6">
-                  10/10
-                  </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </label>  
+              </label>  
           </div>
-        </main>
+      </main>                 
       </div>
     </div>
   </body>

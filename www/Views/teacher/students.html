@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alumnos</title>
-    <script src="../../Controllers/asegurarpagina.js"></script>
-    <script src="../../Controllers/logout.js"></script>
+    <script src="../../Controllers/independiente/asegurarpagina.js"></script>
+    <script src="../../Controllers/independiente/logout.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -427,7 +427,9 @@
                     <tr
                       class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
                     >
-
+                    <th class="px-4 py-3">
+                      <input type="checkbox" id="select-all" class="form-checkbox">
+                    </th>
                       <!-- Tables -->
                       <th class="px-4 py-3">Alumno</th>
                       <th class="px-4 py-3">Unidad</th>
@@ -725,5 +727,13 @@
         </main>
       </div>
     </div>
+    <script>
+      document.getElementById('select-all').addEventListener('change', function() {
+      var checkboxes = document.querySelectorAll('.form-checkbox');
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = this.checked;
+      });
+    });
+    </script>
   </body>
 </html>

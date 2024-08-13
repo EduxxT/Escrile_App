@@ -47,6 +47,7 @@ function data() {
     isAddUserModalOpen: false,
     isEditUserModalOpen: false,
     isDeleteUserModalOpen: false,
+    isJoinClassModalOpen: false,
     editUserId: null,
     editUsername: '',
     editUserEmail: '',
@@ -57,10 +58,7 @@ function data() {
     },
     closeModal() {
       this.isModalOpen = false;
-      if (this.trapCleanup) {
-        this.trapCleanup();
-        this.trapCleanup = null;
-      }
+      document.getElementById('nombreClase').value = '';
     },
     openAddUserModal() {
       this.isAddUserModalOpen = true;
@@ -184,6 +182,13 @@ function data() {
 
         mostrarUsuarios();
       }
+    },
+    openJoinClassModal() {
+      this.isJoinClassModalOpen = true;
+    },
+    closeJoinClassModal() {
+      this.isJoinClassModalOpen = false;
+      document.getElementById('codigoClase').value = '';
     },
     logout() {
       logout();

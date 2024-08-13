@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inicio</title>
-    <script src="../../Controllers/asegurarpagina.js"></script>
-    <script src="../../Controllers/logout.js"></script>
+    <script src="../../Controllers/independiente/asegurarpagina.js"></script>
+    <script src="../../Controllers/independiente/logout.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -25,12 +25,9 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
       defer
     ></script>
-    <script src="../../public/js/charts-lines.js" defer></script>
-    <script src="../../public/js/charts-pie.js" defer></script>
     <script src="../../Controllers/routes.js"></script>
-    <script src="../../Controllers/crearClase.js"></script>
-    <script src="../../Controllers/unirseClase.js"></script>
-    <script src="../../Controllers/mostrarClases.js"></script>
+    <script src="../../Controllers/crear/crearClase.js"></script>
+    <script src="../../Controllers/mostrar/mostrarClases.js"></script>
   </head>
   <body>
     <div
@@ -311,14 +308,6 @@
             >
               Tus clases
             </h2>
-
-            <!-- Content -->
-             
-            <div id="clasesCreadas" class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-              <!-- Card -->
-            </div>
-            
-
             <div>
               <button
                 @click="openModal"
@@ -326,6 +315,14 @@
               >
                 Crear clase
               </button>
+            </div>
+            <br>
+            <h2></h2>
+
+            <!-- Content -->
+             
+            <div id="clasesCreadas" class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+              <!-- Card -->
             </div>
 
             <div

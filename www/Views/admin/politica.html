@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Política de privacidad</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../public/css/tailwind.output.css" />
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+    <script src="../../public/js/init-alpine.js"></script>
+  </head>
+  <body>
+    <div
+      class="flex h-screen bg-gray-50 dark:bg-gray-900"
+      :class="{ 'overflow-hidden': isSideMenuOpen}"
+    >
+
+      <div
+        x-show="isSideMenuOpen"
+        x-transition:enter="transition ease-in-out duration-150"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in-out duration-150"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"
+      ></div>
+      <div class="flex flex-col flex-1">
+        <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
+          <div class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300">
+            <div class="flex-1 flex items-center">
+              <!-- Back button -->
+              <a
+                href="./create-account.html"
+                class="rounded-md focus:outline-none focus:shadow-outline-purple mr-8"
+                aria-label="Go back"
+              >
+                <svg
+                  class="w-5 h-5"
+                  aria-hidden="true"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a1 1 0 01-.707-.293l-6-6a1 1 0 010-1.414l6-6A1 1 0 1110.707 5.707L5.414 11H17a1 1 0 110 2H5.414l5.293 5.293A1 1 0 0110 18z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="flex items-center">
+              <!-- Theme toggler -->
+              <button
+                class="rounded-md focus:outline-none focus:shadow-outline-purple"
+                @click="toggleTheme"
+                aria-label="Toggle color mode"
+              >
+                <template x-if="!dark">
+                  <svg
+                    class="w-5 h-5"
+                    aria-hidden="true"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                    ></path>
+                  </svg>
+                </template>
+                <template x-if="dark">
+                  <svg
+                    class="w-5 h-5"
+                    aria-hidden="true"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </template>
+              </button>
+            </div>
+          </div>
+        </header>
+        
+        
+        <main class="h-full pb-16 overflow-y-auto">
+          <div class="container px-6 mx-auto grid">
+            <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+              Política de privacidad
+            </h2>
+        
+            <h3 class="my-6 text-xl font-semibold text-gray-700 dark:text-gray-200">
+              Seguridad y privacidad en Escrile
+            </h3>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Mantener tu seguridad en Internet significa proteger tu información y respetar tu privacidad. Por eso, en todos los productos que ofrecemos, nos centramos en proteger tu información, tratarla de forma responsable y dejar que la controles. Nuestros equipos trabajan a diario para que puedas utilizar los productos de Escrile de forma más segura, ya sea al navegar por Internet, gestionar tu bandeja de entrada u obtener indicaciones.
+            </p>
+
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Tu información está protegida por sistemas de seguridad de primera clase, y siempre puedes controlar tus ajustes de privacidad en tu cuenta de Escrile.
+            </p>
+        
+            <ul class="list-disc ml-6 text-gray-600 dark:text-gray-300 mb-6 text-justify">
+              <li> Para obtener información general sobre la privacidad en Escrile, sigue leyendo este artículo.</li>
+              <li> Para obtener más información sobre las herramientas de privacidad, visita el centro de Privacidad y Seguridad de Escrile.</li>
+              <li> Para obtener más información sobre la privacidad en las cuentas de centros educativos, visita el Centro de Privacidad y Seguridad de Escrile.</li>
+            </ul>
+        
+            <h3 class="my-6 text-xl font-semibold text-gray-700 dark:text-gray-200">
+              Una experiencia más útil y personalizada para ti
+            </h3>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Cuando usas Escrile, procesamos algunos datos para mejorar tu experiencia con el producto. Tu información está segura. Siempre puedes controlar tus ajustes de privacidad en tu cuenta de Escrile.
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Tu contenido se almacena de forma segura
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Cuando subes un archivo de cualquier tipo a Escrile, se almacena de forma segura en nuestros centros de datos de primera categoría. Los datos se cifran, tanto en tránsito como en reposo. Para que puedas acceder a estos archivos sin conexión, también almacenamos esta información en tu dispositivo.
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              La seguridad integrada en tu cuenta de Escrile está diseñada para detectar y bloquear amenazas tales como el spam, la suplantación de identidad (phishing) y el software malicioso. Tu actividad se almacena siguiendo los estrictos estándares y prácticas del sector.
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Tu nombre y tu dirección de correo nos ayudan a sincronizar tus datos
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Guardamos tu nombre y tu dirección de correo electrónico para almacenar tus preferencias, las clases en que te has inscrito, los comentarios de clase y la entrega de tareas, así como para ayudarte a iniciar sesión.
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Tu información te ayuda a crear y gestionar tu cuenta de Escrile
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Cuando creas una cuenta de Escrile, registramos tu nombre y tu correo. Si gestionas tu cuenta de Escrile, puedes decidir si quieres proporcionar tu dirección física, subir tus contactos o añadir una foto de perfil.
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Escrile usa los datos para mejorar tu experiencia
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Procesamos tu contenido para proporcionar funciones de Escrile como los informes de originalidad y para mejorar la experiencia que te ofrecemos de acuerdo con tus necesidades.
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Para mejorar el rendimiento y la fiabilidad de Escrile, y para ayudarte a solucionar problemas mientras utilizas Escrile, recogemos datos de rendimiento. También guardamos esta información con fines de análisis y para ayudar a prevenir el uso inadecuado de nuestros servicios.
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Escrile no utiliza tu contenido con fines publicitarios
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              En los servicios principales de Escrile no se muestran anuncios ni se utilizan datos con fines publicitarios. Además, si se muestran anuncios en los servicios adicionales utilizas tu cuenta de Escrile en un centro de enseñanza primaria o secundaria, no te mostraremos anuncios personalizados. Es decir, no verás publicidad basada en información de tu cuenta ni en tus actividades anteriores. No obstante, podríamos mostrar anuncios basados en factores generales, como tus consultas de búsqueda, la hora del día o el contenido de la página que estés viendo.
+            </p>
+        
+            <h3 class="my-6 text-xl font-semibold text-gray-700 dark:text-gray-200">
+              Controla tu contenido con unos ajustes fáciles de usar
+            </h3>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Tú decides qué contenido compartes y con quién
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Escrile respeta tu privacidad. Solo accedemos a tu contenido privado si contamos con tu permiso o si la ley nos lo exige. En el Informe de transparencia de Escrile, recogemos información sobre cómo las políticas y acciones de gobiernos y empresas afectan a la privacidad, la seguridad y el acceso a la información.
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Si tienes una cuenta de centro educativo, tu organización puede consultar los registros de las acciones que Escrile realiza cuando accede al contenido. Consulta cómo protege Escrile la seguridad y la privacidad de tu organización.
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Es fácil ver y controlar tus datos
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              En el panel de control de tu cuenta de Escrile, puedes ver un resumen de los productos de Escrile que utilizas y del contenido que almacenas, como tus mensajes de correo. Classroom también proporciona funciones de archivado y eliminación de datos.
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Sincroniza tus servicios con tu ubicación
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Almacenamos algunos datos de ubicación para conocer cómo es tu experiencia con el producto en relación con la zona geográfica en la que estás (por ejemplo, cuando envías comentarios a Escrile) y para proteger tu cuenta (por ejemplo, si detectamos que has iniciado sesión desde una nueva ubicación).
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Puedes llevarte tus datos contigo
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Todos los usuarios deberían tener acceso al contenido que comparten con nosotros, sin importar el momento ni el motivo. Por ello, hemos creado Descargar tus datos, una función que te permite descargar tus correos, contactos y marcadores. Tú eliges si quieres hacer una copia de tus datos, crear una copia de seguridad o incluso moverlos a otro servicio.
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Siempre puedes controlar los datos que se guardan en tu cuenta de Escrile. Consulta cómo descargar tus datos.
+            </p>
+        
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-justify">
+              Si tienes una cuenta de centro educativo, tu organización tiene opción de descargar tus datos y de restringir tu capacidad de descargarlos. Consulta cómo puede exportar sus datos una organización.
+            </p>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
